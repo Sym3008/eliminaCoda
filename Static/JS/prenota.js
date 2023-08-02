@@ -23,6 +23,12 @@ window.addEventListener("load", function (Event) {
 
 function prenota(ufficio) {
     let APInewRec= APIlistUff+"?ufficio="+ufficio;
+    let logo = document.getElementById("logo");
+    logo.classList.add("rotate-center");
+    let botts= document.querySelectorAll("button");
+    for(let i=0; i<botts.length; i++){
+        botts[i].disabled = true;
+    }
     fetch(APInewRec,{
             method:"POST" // richiama il metodo doPost per prenotare un nuovo utente in coda con il Ticket
         }).then(function (response){

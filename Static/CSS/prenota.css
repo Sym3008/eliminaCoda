@@ -18,3 +18,8 @@ button:hover{
         font-size: 15px;
     }
 }
+.rotate-hor-center{-webkit-animation:rotate-hor-center 3s cubic-bezier(.455,.03,.515,.955) both;animation:rotate-hor-center 3s cubic-bezier(.455,.03,.515,.955) both}
+@-webkit-keyframes rotate-hor-center{0%{-webkit-transform:rotateX(0);transform:rotateX(0)}100%{-webkit-transform:rotateX(-360deg);transform:rotateX(-360deg)}}@keyframes rotate-hor-center{0%{-webkit-transform:rotateX(0);transform:rotateX(0)}100%{-webkit-transform:rotateX(-360deg);transform:rotateX(-360deg)}}
+
+.rotate-center{-webkit-animation:rotate-center 3s ease-in-out both;animation:rotate-center 3s ease-in-out both}
+@-webkit-keyframes rotate-center{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate-center{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}

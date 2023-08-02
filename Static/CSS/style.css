@@ -8,6 +8,8 @@ body{
 .logo img{
     height: 180px;
     position: relative;
+}
+.risalto{
     z-index: 1;
 }
 .logo{
