@@ -1,0 +1,159 @@
+let spreadsheet = SpreadsheetApp.openById("1K3ATZiTV2rzyWdSfl32sl5aSxlVkLPSH0mmmRGYClIo"); //ID foglio excel dove lavorare i dati
+let today = new Date().toLocaleString("it-IT", {timeZone: "Europe/Rome"});
+
+function doGet(){
+  //funzione di default eseguita con i deployment all'interrogazione dell'URL con metodo GET
+  // restituisce la lista in un JSON dei fogli esistenti ove il nome contenga la stringa "Ufficio"
+  let listSheet = [];
+  let y=0;
+  for (let i=0; i<spreadsheet.getNumSheets();i++){
+    let sheets = spreadsheet.getSheets();
+    if (sheets[i].getName().includes('Ufficio')){
+      listSheet[y]=sheets[i].getName();
+      y++;
+    }
+  }
+  let result = {}
+  //result.data  = spreadsheet.getSheetName();
+  result.data  = listSheet;
+  result.time = today
+  return ContentService.createTextOutput(JSON.stringify(result));
+}
+
+function doPost(e){
+  //funzione di default eseguita con i deployment chiamando l'URL con metodo POST
+  // restituisce il numero di prenotazione appena preso
+  let data = e.parameter['ufficio'];
+  const sheet = spreadsheet.getSheetByName(data);  
+  let npre=prossimo(data);
+  sheet.appendRow([npre,"", today,""]);
+  riordina(data);
+  return ContentService.createTextOutput(npre);
+}
+
+function prossimo(uff){
+  // funzione che restituisce il prossimo numero libero per effettuare la prenotazione 
+  //tenendo traccia sulla cella G1, dell'ultimo numero appena prenotato
+  let she = spreadsheet.getSheetByName(uff);
+  let cell='G1';
+  let n= she.getRange(cell).getValue();
+  n++;
+  she.getRange(cell).setRichTextValue(SpreadsheetApp.newRichTextValue()
+        .setText(n)
+        .build());
+  return n;
+}
+
+function riordina(uff){
+  // Funzione presente anche su altri script!!
+  //Funzione che riordina il figlio dell'ufficio prima per la data e ora di prenotazione, poi per la priorità
+  let she = spreadsheet.getSheetByName(uff);
+  try{
+    she.getRange('A:D').activate();
+    she.getFilter().remove();
+    she.getRange('A:D').createFilter();
+  }catch(error){
+    she.getRange('A:D').createFilter();
+  }
+  
+  she.getRange('C1').activate();
+  she.getFilter().sort(3, true);
+  she.getRange('B1').activate();
+  she.getFilter().sort(2, true);
+}
+// ---------------------------------------------------------------------------------------------------------------------------------
+// funzioni implementati su alti progetti per sfruttare i metodi di default
+/*
+
+function scorriCoda(u, op) {
+  //op = "Simone Castelluccio"
+  //u="Ufficio Tari-Tares";
+
+  let she = spreadsheet.getSheetByName(u);
+  riordina(u);
+  let num=0;
+  let pren=new Date();
+  let range = she.getRange("A2:F200").getValues();
+  let rd= range.length;
+  let y=5; //colonna dei prenotati online
+  for(let i=0; i<rd; i++){
+    num= range[i][y];
+    if(num!= 0){
+      pren = range[i][2];
+      if (pren <= today){
+        let cell='D'+(i+2);
+        she.getRange(cell).setRichTextValue(SpreadsheetApp.newRichTextValue()
+        .setText(today)
+        .build());
+        i=rd;
+      }else{
+        y=4; //colonna dei prenotati con ticket
+      }
+    }else if(i==(rd-1) && y==5){
+        i=-1;
+        y=4;
+    }
+  }
+  if (num!=0){
+    she = spreadsheet.getSheetByName("Log");
+    she.appendRow([u,num, pren.toLocaleString("it-IT", {timeZone: "Europe/Rome"}),today,op]);
+  }
+  return num;
+  
+};
+
+function attesa(uff, num, preno){
+  //uff="Ufficio Tari-Tares";
+  //num=1;
+  //preno= new Date("Fri Jul 28 2023 09:14:21 GMT+0200");
+  
+  riordina(uff);
+  let coda=0;
+  let trovato=false;
+  var she = spreadsheet.getSheetByName(uff);
+  if(num!=""){
+    let range = she.getRange("E2:F200").getValues();
+    let p = she.getRange("C2:C200").getValues();
+    let rd= range.length;
+    for(let i=0; i<rd; i++){
+      if(range[i][0]!="" || range[i][1]!=""){
+        if((range[i][0]==num || range[i][1]==num) && p[i][0].toLocaleString("it-IT", {timeZone: "Europe/Rome"})==preno.toLocaleString("it-IT", {timeZone: "Europe/Rome"})){
+          
+          i=rd;
+          trovato=true;
+        }else{
+          coda++;
+        }        
+      }
+    }
+    if(!trovato){
+      coda= "Utente non in coda!";
+    }
+  }else{
+    let range = she.getRange("E2:F200").getValues();
+    let rd= range.length;
+    for(let i=0; i<rd; i++){
+      if(range[i][0]!="" || range[i][1]!=""){
+        coda++;
+      }
+    }
+  }
+  return coda;
+}
+
+
+function ripulisci() {  
+  for (let i=0; i<spreadsheet.getNumSheets();i++){
+    let sheets = SpreadsheetApp.getActiveSpreadsheet().getSheets();
+    if (sheets[i].getName().includes('Ufficio')){
+      sheets[i].getRange('A2:D').activate();
+      sheets[i].getActiveRangeList().clear({contentsOnly: true, skipFilteredRows: true});
+      let cell='G1';
+      sheets[i].getRange(cell).setRichTextValue(SpreadsheetApp.newRichTextValue()
+      .setText(0)
+      .build());
+    }
+  }
+};
+
+*/

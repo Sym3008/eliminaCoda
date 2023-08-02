@@ -1,0 +1,38 @@
+body{
+    height: 100vh;
+    width: 100%;
+    background-image: radial-gradient(#a9d8ff, #12b1fb, #1228fb);
+    font-family: "ui-rounded", "Courier New", monospace;
+    font-size: 25px;
+}
+.logo img{
+    height: 180px;
+    position: relative;
+    z-index: 1;
+}
+.logo{
+    margin-top: 2.5rem;
+    margin-left:-82%;
+}
+.scheda{
+    width: 90%;
+    border-radius: 10px;
+    border-color: white;
+    border-width: 3px;
+    border-style: solid;
+    background: rgba(255,255,255,0.5);
+    padding: 3.5rem;
+    margin-top:-80px;
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .logo img{
+        height: 140px;
+        position: relative;
+        z-index: 1;
+    }
+    .logo{
+        margin-top: 1.5rem;
+        margin-left:-70%;
+    }
+}

@@ -1,0 +1,116 @@
+.green{
+color: green
+}
+
+.scheda-fixed{
+    width: 350px;
+    text-align: center;
+    border-radius: 10px;
+    border-color: white;
+    border-width: 3px;
+    border-style: solid;
+    background: rgba(255,255,255,0.8);
+    padding: 0.5rem;
+    margin-top:-80px;
+
+}
+
+button{
+color: green;
+font-size: 40px;
+font-weight: bolder;
+width:100%;
+max-width:17.5em;
+height:100px;
+border-radius: 10px;
+    background: rgba(255,255,255,0.4);
+}
+button:hover{
+color: rgba(255,250,100,.8);
+    background: rgba(0,128,0,.9);;
+}
+
+.bg-green{
+    background: rgba(0,200,0,0.5);
+}
+
+.bg-red{
+    background: rgba(200,0,0,0.5);
+}
+
+.bg-yellow{
+    background: rgba(255,200,0,0.5);
+}
+
+
+
+.big-text{
+font-size: 45px
+}
+
+.medium-text{
+ font-size: 30px
+ }
+
+.small-text{
+font-size: 25px
+}
+
+.tiny-text{
+font-size: 15px
+}
+
+
+@media (max-width: 1000px) {
+.scheda-fixed{
+    width: 150px;
+}
+.big-text{
+font-size: 35px
+}
+
+.medium-text{
+ font-size: 20px
+ }
+
+ .small-text{
+ font-size: 15px
+ }
+
+ .tiny-text{
+ font-size: 10px
+ }
+
+}
+/*.rotate-scale-up {
+	-webkit-animation: rotate-scale-up 0.65s linear both;
+	        animation: rotate-scale-up 0.65s linear both;
+}
+@-webkit-keyframes rotate-scale-up {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+            transform: scale(1) rotateZ(0);
+  }
+  50% {
+    -webkit-transform: scale(2) rotateZ(180deg);
+            transform: scale(2) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+            transform: scale(1) rotateZ(360deg);
+  }
+}
+@keyframes rotate-scale-up {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+            transform: scale(1) rotateZ(0);
+  }
+  50% {
+    -webkit-transform: scale(2) rotateZ(180deg);
+            transform: scale(2) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+            transform: scale(1) rotateZ(360deg);
+  }
+}*/

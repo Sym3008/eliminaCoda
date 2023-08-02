@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="Static/CSS/style.css"/>
+    <link rel="stylesheet" type="text/css" href="Static/CSS/ufficio.css"/>
+    <link rel="icon" href="Static/IMG/logo.png">
+    <title>Prenota Uffici Maddaloni</title>
+</head>
+<body>
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    <div class="logo rotate-scale-up">
+        <img src="https://www.comune.maddaloni.caserta.it/images/IMG/stemma-maddolini.png"/>
+    </div>
+    <div id="vista" class="scheda">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="big-text"><b>Backoffice Operatore</b></div>
+            <div class="medium-text"><b>Sistema Eliminacode</b></div>
+            <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
+                <div class="m-5 small-text scheda-fixed bg-yellow"><b>Serviamo il numero:
+                    <div class="m-3" id="servito">--</div>
+                </b></div>
+                <div class="m-5 small-text scheda-fixed bg-red"><b>Utenti in coda:
+                    <div class="m-3" id="coda">--</div>
+                </b></div>
+            </div>
+            <button class="big-text m-5">Avanti il prossimo</button>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="m-1 tiny-text">Username:</div>
+    <div class="m-1 tiny-text">Ufficio:</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+<script src="Static/JS/js.js"></script>
+<script src="Static/JS/ufficio.js"></script>
+</body>
+</html>
