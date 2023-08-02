@@ -5,8 +5,15 @@ window.addEventListener("load", function (Event) {
     setCookie("user", "SimoneC", 365) ;
     setCookie("ufficio", "Ufficio Anagrafe", 365) ;
     console.log(getCookie("user"));
+
     fetch(APIlistUff,{
-        method:"GET"  //richiama il metodo doGet del deploy per caricare la lista degli uffici
+        method:"GET",  //richiama il metodo doGet del deploy per caricare la lista degli uffici
+//        mode: "no-cors",
+//        headers:{
+//            "Content-Type": "application/json",
+//            "Access-Control-Allow-Origin": "*",
+//        },
+
     }).then(function (response){
         return response.json();
     }).then(function (data){
@@ -18,6 +25,10 @@ window.addEventListener("load", function (Event) {
             bott.innerHTML=data.data[i];
             uffici.appendChild(bott);
         }
+//        setTimeout(() => {
+//        //        location.reload();
+//            prenota("Ufficio Anagrafe");
+//        },50000);
     })
 });
 
@@ -56,12 +67,12 @@ function prenota(ufficio) {
             //f.appendChild(b);
 
             setTimeout(() => {
-                window.print();
-             }, 1000);
+//                window.print();
+             }, 1500);
 
              setTimeout(() => {
-                             location.reload();
-                          }, 3000);
+                 location.reload();
+              }, 3000);
             //window.print();
             // impostare un profilo crhome
             // nelle Proprietà dell'collegamento descktop in Destinazione aggiungere "--kiosk-printing"

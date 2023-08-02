@@ -5,6 +5,9 @@ let ufficio= getCookie("ufficio");
 API=API+"?ufficio="+ufficio;
 
 window.addEventListener("load", function (Event) {
+//    setTimeout(() => {
+//            location.reload();
+//        },100000);
     if (user==""){
         let vista = document.getElementById("vista");
         vista.innerHTML="NON SEI AUTORIZZATO";
@@ -25,6 +28,6 @@ async function utentiCoda(){
             let coda = document.getElementById("coda");
             coda.innerHTML=data;
             utentiCoda();
-        },200);
+        },5000);
     });
 }
